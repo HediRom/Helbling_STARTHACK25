@@ -2,7 +2,7 @@ import uuid
 import json
 import os
 
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, redirect
 import azure.cognitiveservices.speech as speechsdk
 from flask_sock import Sock
 from flask_cors import CORS
@@ -10,6 +10,7 @@ from flasgger import Swagger
 
 from openai import OpenAI
 import io
+
 
 AZURE_SPEECH_KEY = "See https://starthack.eu/#/case-details?id=21, Case Description"
 AZURE_SPEECH_REGION = "switzerlandnorth"
@@ -22,6 +23,10 @@ cors = CORS(app)
 swagger = Swagger(app)
 
 sessions = {}
+
+@app.route('/')
+def home():
+    return redirect('/apidocs')
 
 def transcribe_whisper(audio_recording):
     audio_file = io.BytesIO(audio_recording)
