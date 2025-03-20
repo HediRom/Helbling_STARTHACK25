@@ -26,7 +26,7 @@ sessions = {}
 
 @app.route('/')
 def home():
-     return redirect('/apidocs')
+    return redirect('/apidocs')
 
 def transcribe_whisper(audio_recording):
     audio_file = io.BytesIO(audio_recording)
