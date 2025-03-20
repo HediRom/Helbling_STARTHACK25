@@ -26,6 +26,7 @@ sessions = {}
 
 @app.route('/')
 def home():
+    
     return redirect('/apidocs')
 
 def transcribe_whisper(audio_recording):
